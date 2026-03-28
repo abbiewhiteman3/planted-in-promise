@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planted in Promise Skin Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --sage: #7D9B76;
+    --sage-light: #B5C9B1;
+    --sage-pale: #E8EFE6;
+    --forest: #3A5C38;
+    --forest-deep: #243D22;
+    --warm-cream: #FAF6EE;
+    --warm-tan: #E8DECE;
+    --brown-cross: #A0724A;
+    --text-dark: #2C3B2A;
+    --text-mid: #5A6E58;
+    --text-light: #8A9E88;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--warm-cream);
+    color: var(--text-dark);
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── BOTANICAL SVG DECORATIONS ── */
+  .botanical-corner {
+    position: absolute;
+    opacity: 0.12;
+    pointer-events: none;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 56px;
+    background: rgba(250,246,238,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(125,155,118,0.15);
+  }
+
+  .nav-logo {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .nav-logo-main {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    color: var(--forest);
+    font-weight: 500;
+  }
+
+  .nav-logo-sub {
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--sage);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    align-items: center;
+  }
+
+  .nav-links a {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 400;
+  }
+
+  .nav-links a:hover { color: var(--forest); }
+
+  .nav-book {
+    background: var(--forest) !important;
+    color: var(--warm-cream) !important;
+    padding: 10px 24px;
+    font-size: 10px !important;
+    letter-spacing: 0.25em !important;
+    transition: background 0.3s !important;
+  }
+
+  .nav-book:hover { background: var(--forest-deep) !important; color: var(--warm-cream) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+    padding-top: 80px;
+  }
+
+  .hero-left {
+    background: var(--sage-pale);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 64px 80px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Botanical SVG embedded in hero */
+  .hero-botanical {
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    width: 320px;
+    opacity: 0.15;
+  }
+
+  .hero-cross {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 32px;
+    opacity: 0.7;
+    animation: fadeUp 1s ease both;
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 20px;
+    animation: fadeUp 1s 0.1s ease both;
+    font-weight: 400;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 5vw, 68px);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--forest-deep);
+    margin-bottom: 12px;
+    animation: fadeUp 1s 0.2s ease both;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--forest);
+  }
+
+  .hero-tagline {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--text-mid);
+    margin-bottom: 40px;
+    line-height: 1.7;
+    animation: fadeUp 1s 0.3s ease both;
+  }
+
+  .hero-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 40px;
+    animation: fadeUp 1s 0.4s ease both;
+  }
+
+  .hero-divider-line {
+    height: 1px;
+    width: 40px;
+    background: var(--sage);
+  }
+
+  .hero-divider-text {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-light);
+  }
+
+  .hero-location {
+    font-size: 12px;
+    color: var(--text-mid);
+    letter-spacing: 0.12em;
+    margin-bottom: 48px;
+    animation: fadeUp 1s 0.4s ease both;
+    line-height: 1.8;
+  }
+
+  .hero-location strong {
+    color: var(--forest);
+    font-weight: 700;
+    display: block;
+    font-size: 13px;
+  }
+
+  .btn-book {
+    display: inline-block;
+    background: var(--forest);
+    color: var(--warm-cream);
+    padding: 16px 40px;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 400;
+    transition: background 0.3s, transform 0.2s;
+    align-self: flex-start;
+    animation: fadeUp 1s 0.5s ease both;
+  }
+
+  .btn-book:hover { background: var(--forest-deep); transform: translateY(-1px); }
+
+  .hero-right {
+    background: var(--sage-pale);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Room image placeholder with botanical feel */
+  .hero-image-placeholder {
+    width: 100%;
+    height: 100%;
+    background:
+      linear-gradient(160deg, rgba(125,155,118,0.3) 0%, rgba(58,92,56,0.15) 50%, rgba(232,222,206,0.4) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .hero-image-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-mid);
+    letter-spacing: 0.1em;
+    text-align: center;
+    padding: 0 40px;
+    line-height: 2;
+  }
+
+  /* Decorative SVG leaf cluster for hero right */
+  .hero-leaf-decor {
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 280px;
+    opacity: 0.2;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── FAITH BANNER ── */
+  .faith-banner {
+    background: var(--forest);
+    padding: 40px 56px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .faith-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 Q32 25 30 55 M15 20 Q30 22 45 20' stroke='%23ffffff' stroke-width='0.5' fill='none' opacity='0.05'/%3E%3C/svg%3E") repeat;
+  }
+
+  .faith-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(16px, 2vw, 22px);
+    font-style: italic;
+    color: var(--sage-pale);
+    letter-spacing: 0.05em;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto 12px;
+  }
+
+  .faith-ref {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--sage-light);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── ABOUT ── */
+  .about-section {
+    padding: 120px 80px;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 100px;
+    align-items: center;
+    max-width: 1300px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .about-text { position: relative; }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 16px;
+    display: block;
+    font-weight: 400;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--forest-deep);
+    margin-bottom: 20px;
+  }
+
+  .section-title em { font-style: italic; color: var(--forest); }
+
+  .section-rule {
+    width: 48px;
+    height: 2px;
+    background: var(--sage);
+    margin-bottom: 32px;
+  }
+
+  .about-body p {
+    font-size: 15px;
+    line-height: 2;
+    color: var(--text-mid);
+    margin-bottom: 20px;
+    letter-spacing: 0.03em;
+  }
+
+  .about-body strong { color: var(--forest); font-weight: 700; }
+
+  .about-visual {
+    position: relative;
+  }
+
+  /* Organic shape card instead of rectangle */
+  .about-card-organic {
+    background: var(--sage-pale);
+    padding: 48px 40px;
+    position: relative;
+    border-left: 3px solid var(--sage);
+  }
+
+  .about-card-organic::before {
+    content: '';
+    position: absolute;
+    top: -12px; right: -12px;
+    bottom: 12px; left: 12px;
+    border: 1px solid rgba(125,155,118,0.3);
+    z-index: -1;
+  }
+
+  .organic-stat {
+    margin-bottom: 36px;
+  }
+
+  .organic-stat:last-child { margin-bottom: 0; }
+
+  .organic-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 400;
+    color: var(--sage);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .organic-stat-label {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    font-weight: 400;
+  }
+
+  .organic-stat-desc {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-top: 4px;
+  }
+
+  /* ── SERVICES ── */
+  .services-section {
+    background: var(--forest-deep);
+    padding: 100px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .services-section::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(125,155,118,0.12) 0%, transparent 70%);
+  }
+
+  .services-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .services-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 72px;
+    align-items: end;
+  }
+
+  .services-section .section-label { color: var(--sage-light); }
+
+  .services-section .section-title {
+    color: var(--warm-cream);
+  }
+
+  .services-note {
+    font-size: 14px;
+    color: var(--sage-light);
+    line-height: 1.9;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    align-self: end;
+  }
+
+  /* Horizontal service rows instead of grid cards */
+  .service-row {
+    border-top: 1px solid rgba(125,155,118,0.2);
+    padding: 32px 0;
+    display: grid;
+    grid-template-columns: 200px 1fr auto;
+    gap: 40px;
+    align-items: start;
+    transition: background 0.3s;
+    cursor: default;
+  }
+
+  .service-row:last-child { border-bottom: 1px solid rgba(125,155,118,0.2); }
+
+  .service-row:hover { background: rgba(125,155,118,0.05); padding-left: 16px; }
+
+  .service-row-category {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--sage);
+    padding-top: 4px;
+    font-weight: 400;
+  }
+
+  .service-row-content {}
+
+  .service-row-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--warm-cream);
+    margin-bottom: 8px;
+    font-weight: 400;
+  }
+
+  .service-row-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .service-tag {
+    font-size: 11px;
+    color: var(--sage-light);
+    background: rgba(125,155,118,0.12);
+    padding: 4px 12px;
+    letter-spacing: 0.08em;
+  }
+
+  .service-row-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    color: var(--sage-light);
+    text-align: right;
+    padding-top: 4px;
+    font-style: italic;
+    white-space: nowrap;
+  }
+
+  /* ── BOOKING CTA ── */
+  .cta-section {
+    padding: 120px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .cta-text .section-title { margin-bottom: 16px; }
+
+  .cta-body {
+    font-size: 15px;
+    line-height: 2;
+    color: var(--text-mid);
+    margin-bottom: 40px;
+    letter-spacing: 0.03em;
+  }
+
+  .cta-body strong { color: var(--forest); font-weight: 700; }
+
+  .btn-outline {
+    display: inline-block;
+    border: 2px solid var(--forest);
+    color: var(--forest);
+    padding: 14px 36px;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 400;
+    transition: all 0.3s;
+    margin-right: 16px;
+    margin-bottom: 12px;
+  }
+
+  .btn-outline:hover { background: var(--forest); color: var(--warm-cream); }
+
+  .cta-visual {
+    background: var(--sage-pale);
+    padding: 48px;
+    position: relative;
+  }
+
+  .cta-visual::after {
+    content: '';
+    position: absolute;
+    bottom: -10px; right: -10px;
+    width: 100%; height: 100%;
+    border: 1px solid rgba(125,155,118,0.25);
+    z-index: -1;
+  }
+
+  .hours-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--forest-deep);
+    margin-bottom: 24px;
+    font-weight: 400;
+  }
+
+  .hours-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(125,155,118,0.2);
+    font-size: 13px;
+    color: var(--text-mid);
+    letter-spacing: 0.05em;
+  }
+
+  .hours-row:last-child { border-bottom: none; }
+  .hours-row span:first-child { font-weight: 400; color: var(--forest); }
+
+  .location-block {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(125,155,118,0.2);
+  }
+
+  .location-label {
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .location-text {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.9;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--forest-deep);
+    padding: 56px 80px 40px;
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 48px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(125,155,118,0.2);
+  }
+
+  .footer-brand-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--warm-cream);
+    margin-bottom: 6px;
+  }
+
+  .footer-brand-sub {
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--sage-light);
+  }
+
+  .footer-faith {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--sage-light);
+    max-width: 280px;
+    line-height: 1.8;
+    text-align: center;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: right;
+  }
+
+  .footer-links a {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage-light);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover { color: var(--warm-cream); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-copy {
+    font-size: 11px;
+    color: rgba(181,201,177,0.5);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { min-height: 300px; }
+    .hero-left { padding: 60px 32px; }
+    .about-section { grid-template-columns: 1fr; padding: 80px 32px; gap: 48px; }
+    .services-section { padding: 80px 32px; }
+    .services-header { grid-template-columns: 1fr; }
+    .service-row { grid-template-columns: 1fr; gap: 8px; }
+    .service-row-price { text-align: left; }
+    .cta-section { grid-template-columns: 1fr; padding: 80px 32px; }
+    footer { padding: 48px 32px 32px; }
+    .footer-top { flex-direction: column; gap: 32px; }
+    .footer-links { text-align: left; }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <span class="nav-logo-main">Planted in Promise</span>
+    <span class="nav-logo-sub">Skin Studio</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="planted-booking.html">Location</a></li>
+    <li><a href="planted-booking.html" class="nav-book">Book Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <!-- Cross SVG -->
+    <svg class="hero-cross" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="12" y1="2" x2="12" y2="22" stroke="#A0724A" stroke-width="1.5"/>
+      <line x1="5" y1="8" x2="19" y2="8" stroke="#A0724A" stroke-width="1.5"/>
+    </svg>
+
+    <p class="hero-eyebrow">Skin Studio · Temperance, MI</p>
+    <h1 class="hero-title">Rooted in <em>faith,</em><br>blooming in<br><em>beauty.</em></h1>
+
+    <div class="hero-divider">
+      <div class="hero-divider-line"></div>
+      <span class="hero-divider-text">Est. 2024</span>
+      <div class="hero-divider-line"></div>
+    </div>
+
+    <div class="hero-location">
+      <strong>Serving Temperance, MI</strong>
+      Monroe · Lambertville · Toledo areas
+    </div>
+
+    <a href="planted-booking.html" class="btn-book">Book Your Appointment</a>
+
+    <!-- Botanical decoration -->
+    <svg class="hero-botanical" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M50 280 C60 200 80 150 120 100 C140 75 160 60 180 40" stroke="#3A5C38" stroke-width="1.5" fill="none"/>
+      <ellipse cx="140" cy="90" rx="30" ry="18" transform="rotate(-30 140 90)" stroke="#3A5C38" stroke-width="1" fill="none"/>
+      <ellipse cx="115" cy="120" rx="28" ry="16" transform="rotate(-50 115 120)" stroke="#3A5C38" stroke-width="1" fill="none"/>
+      <ellipse cx="160" cy="115" rx="26" ry="15" transform="rotate(-10 160 115)" stroke="#3A5C38" stroke-width="1" fill="none"/>
+      <ellipse cx="130" cy="150" rx="24" ry="14" transform="rotate(-45 130 150)" stroke="#3A5C38" stroke-width="1" fill="none"/>
+      <ellipse cx="155" cy="145" rx="22" ry="13" transform="rotate(10 155 145)" stroke="#3A5C38" stroke-width="1" fill="none"/>
+      <ellipse cx="110" cy="160" rx="20" ry="12" transform="rotate(-60 110 160)" stroke="#3A5C38" stroke-width="1" fill="none"/>
+    </svg>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-image-placeholder">
+      <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.4">
+        <line x1="30" y1="5" x2="30" y2="55" stroke="#3A5C38" stroke-width="1.5"/>
+        <line x1="10" y1="18" x2="50" y2="18" stroke="#3A5C38" stroke-width="1.5"/>
+      </svg>
+      <p class="hero-image-text">A space where <em>skin care</em><br>meets <em>sacred rest.</em></p>
+    </div>
+
+    <!-- Leaf decoration -->
+    <svg class="hero-leaf-decor" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M200 300 C180 220 160 170 100 120 C80 105 50 90 20 70" stroke="#3A5C38" stroke-width="2" fill="none"/>
+      <ellipse cx="80" cy="115" rx="35" ry="20" transform="rotate(40 80 115)" stroke="#3A5C38" stroke-width="1.2" fill="none"/>
+      <ellipse cx="110" cy="140" rx="32" ry="18" transform="rotate(20 110 140)" stroke="#3A5C38" stroke-width="1.2" fill="none"/>
+      <ellipse cx="140" cy="165" rx="30" ry="17" transform="rotate(50 140 165)" stroke="#3A5C38" stroke-width="1.2" fill="none"/>
+      <ellipse cx="100" cy="165" rx="28" ry="16" transform="rotate(10 100 165)" stroke="#3A5C38" stroke-width="1.2" fill="none"/>
+      <ellipse cx="130" cy="195" rx="26" ry="15" transform="rotate(35 130 195)" stroke="#3A5C38" stroke-width="1.2" fill="none"/>
+    </svg>
+  </div>
+</div>
+
+<!-- FAITH BANNER -->
+<div class="faith-banner">
+  <p class="faith-quote">"For I know the plans I have for you, plans to prosper you and not to harm you, plans to give you hope and a future."</p>
+  <p class="faith-ref">Jeremiah 29:11</p>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-section">
+    <div class="about-text reveal">
+      <span class="section-label">The Story</span>
+      <h2 class="section-title">Beauty rooted<br>in <em>something</em><br>deeper.</h2>
+      <div class="section-rule"></div>
+      <div class="about-body">
+        <p>Planted in Promise is more than a skin studio — it's a place where clients come to be cared for, not just treated. Every service is performed with intention, skill, and a genuine belief that <strong>you deserve to feel beautiful in your own skin.</strong></p>
+        <p>Licensed in December 2024 and rooted in faith, this studio was built on the conviction that when God plants a promise in you, <strong>you bloom on His timing.</strong> That's the heart behind every appointment.</p>
+        <p>Serving the Temperance, Monroe, Lambertville, and Toledo communities — a welcoming, peaceful space for everyone who walks through the door.</p>
+      </div>
+    </div>
+    <div class="about-visual reveal">
+      <div class="about-card-organic">
+        <div class="organic-stat">
+          <div class="organic-stat-num">4+</div>
+          <div class="organic-stat-label">Service Categories</div>
+          <div class="organic-stat-desc">Waxing, brows, lashes, and facials — all in one peaceful studio.</div>
+        </div>
+        <div class="organic-stat">
+          <div class="organic-stat-num">1</div>
+          <div class="organic-stat-label">Client at a time</div>
+          <div class="organic-stat-desc">Your appointment gets full, undivided attention. No rushing, no distractions.</div>
+        </div>
+        <div class="organic-stat">
+          <div class="organic-stat-num">∞</div>
+          <div class="organic-stat-label">Faith behind it all</div>
+          <div class="organic-stat-desc">Every service is offered with care, intention, and gratitude.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services-section">
+  <div class="services-inner">
+    <div class="services-header reveal">
+      <div>
+        <span class="section-label">What We Offer</span>
+        <h2 class="section-title" style="color:var(--warm-cream)">Services<br>& Pricing</h2>
+      </div>
+      <p class="services-note">Every service is performed with care and precision. Book online or reach out with any questions.</p>
+    </div>
+
+    <div class="service-row reveal">
+      <div class="service-row-category">Facial Waxing</div>
+      <div class="service-row-content">
+        <div class="service-row-name">Face Waxing</div>
+        <div class="service-row-items">
+          <span class="service-tag">Lip — $15</span>
+          <span class="service-tag">Chin — $15</span>
+          <span class="service-tag">Eyebrows — $25</span>
+          <span class="service-tag">Full Face — $50</span>
+        </div>
+      </div>
+      <div class="service-row-price">From $15</div>
+    </div>
+
+    <div class="service-row reveal">
+      <div class="service-row-category">Body Waxing</div>
+      <div class="service-row-content">
+        <div class="service-row-name">Body Waxing</div>
+        <div class="service-row-items">
+          <span class="service-tag">Underarms — $20</span>
+          <span class="service-tag">Bikini — $35</span>
+          <span class="service-tag">Brazilian — $60</span>
+        </div>
+      </div>
+      <div class="service-row-price">From $20</div>
+    </div>
+
+    <div class="service-row reveal">
+      <div class="service-row-category">Brows</div>
+      <div class="service-row-content">
+        <div class="service-row-name">Brow Services</div>
+        <div class="service-row-items">
+          <span class="service-tag">Lamination — $55</span>
+          <span class="service-tag">Lamination & Wax — $65</span>
+          <span class="service-tag">Lam, Wax & Tint — $75</span>
+        </div>
+      </div>
+      <div class="service-row-price">From $55</div>
+    </div>
+
+    <div class="service-row reveal">
+      <div class="service-row-category">Lashes</div>
+      <div class="service-row-content">
+        <div class="service-row-name">Lash Services</div>
+        <div class="service-row-items">
+          <span class="service-tag">Signature Lash Lift — $55</span>
+          <span class="service-tag">Signature Lift & Tint — $65</span>
+          <span class="service-tag">Korean Lash Lift — $75</span>
+          <span class="service-tag">Korean Lift & Tint — $85</span>
+        </div>
+      </div>
+      <div class="service-row-price">From $55</div>
+    </div>
+
+    <div class="service-row reveal">
+      <div class="service-row-category">Coming Soon</div>
+      <div class="service-row-content">
+        <div class="service-row-name">Facials</div>
+        <div class="service-row-items">
+          <span class="service-tag">Customized Facials — Coming Soon</span>
+        </div>
+      </div>
+      <div class="service-row-price" style="color:var(--sage); opacity:0.6;">Soon</div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING / LOCATION -->
+<section id="book">
+  <div class="cta-section">
+    <div class="cta-text reveal">
+      <span class="section-label">Ready to Book</span>
+      <h2 class="section-title">Let's get<br>you <em>glowing.</em></h2>
+      <div class="section-rule"></div>
+      <p class="cta-body">Booking is easy — choose the service that's right for you and reserve your spot online. Have questions? <strong>Reach out anytime.</strong> I'd love to connect before your first visit.</p>
+      <a href="#" class="btn-book" style="display:inline-block; margin-right:16px; margin-bottom:12px;">Book Online</a>
+      <a href="#" class="btn-outline">Send a Message</a>
+    </div>
+    <div class="cta-visual reveal">
+      <h3 class="hours-title">Studio Hours</h3>
+      <div class="hours-row"><span>Monday</span><span>By Appointment</span></div>
+      <div class="hours-row"><span>Tuesday</span><span>By Appointment</span></div>
+      <div class="hours-row"><span>Wednesday</span><span>By Appointment</span></div>
+      <div class="hours-row"><span>Thursday</span><span>By Appointment</span></div>
+      <div class="hours-row"><span>Friday</span><span>By Appointment</span></div>
+      <div class="hours-row"><span>Saturday</span><span>By Appointment</span></div>
+      <div class="hours-row"><span>Sunday</span><span>Closed</span></div>
+      <div class="location-block">
+        <span class="location-label">Serving</span>
+        <p class="location-text">Temperance, MI<br>Monroe · Lambertville · Toledo areas</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">Planted in Promise</div>
+      <div class="footer-brand-sub">Skin Studio · Temperance, MI</div>
+    </div>
+    <p class="footer-faith">"Rooted in faith, blooming in beauty."</p>
+    <div class="footer-links">
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="planted-booking.html">Book Now</a>
+      <a href="#services">Services</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Planted in Promise Skin Studio. All rights reserved.</p>
+    <p class="footer-copy">Temperance, MI · Monroe · Lambertville · Toledo</p>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
